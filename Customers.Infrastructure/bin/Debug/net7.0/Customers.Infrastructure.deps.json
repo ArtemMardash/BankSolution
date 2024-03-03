@@ -1,0 +1,49 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Customers.Infrastructure/1.0.0": {
+        "dependencies": {
+          "Customers.Application": "1.0.0"
+        },
+        "runtime": {
+          "Customers.Infrastructure.dll": {}
+        }
+      },
+      "Customers.Application/1.0.0": {
+        "dependencies": {
+          "Customers.Domain": "1.0.0"
+        },
+        "runtime": {
+          "Customers.Application.dll": {}
+        }
+      },
+      "Customers.Domain/1.0.0": {
+        "runtime": {
+          "Customers.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Customers.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Customers.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Customers.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

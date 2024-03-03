@@ -1,0 +1,14 @@
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\bin\Debug\net8.0\Accounts.Persistence.deps.json
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\bin\Debug\net8.0\Accounts.Persistence.runtimeconfig.json
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\bin\Debug\net8.0\Accounts.Persistence.dll
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\bin\Debug\net8.0\Accounts.Persistence.pdb
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.csproj.AssemblyReference.cache
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.AssemblyInfoInputs.cache
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.AssemblyInfo.cs
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.csproj.CoreCompileInputs.cache
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.dll
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\refint\Accounts.Persistence.dll
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.pdb
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\Accounts.Persistence.genruntimeconfig.cache
+C:\Users\artem\RiderProjects\BankSolution\Accounts.Persistence\obj\Debug\net8.0\ref\Accounts.Persistence.dll

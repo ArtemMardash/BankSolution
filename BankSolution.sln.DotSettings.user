@@ -1,0 +1,10 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=56a1b48f_002Dfdc3_002D475b_002Dadfb_002D18a6218b4ab3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Create_Customer_FromString_Should_Succesesfull" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::84CFBDB6-F5D6-4DF0-8FA5-1A13ADE2499C::net8.0::Customers.Tests.Domain.Tests.CustomerTests.Create_Customer_Should_Fail&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::84CFBDB6-F5D6-4DF0-8FA5-1A13ADE2499C::net8.0::Customers.Tests.Domain.Tests.ValueObjectsTests.Create_FullName_Should_Fail&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+    &lt;ProjectFile&gt;84CFBDB6-F5D6-4DF0-8FA5-1A13ADE2499C/d:Domain.Tests/f:ValueObjectsTests.cs&lt;/ProjectFile&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
