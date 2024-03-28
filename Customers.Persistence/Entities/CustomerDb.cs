@@ -1,8 +1,6 @@
-using Customers.Domain.ValueObjects;
-
 namespace Customers.Persistence.Entities;
 
-public class CustomerDb
+public class CustomerDb : Entity
 {
     /// <summary>
     /// Id

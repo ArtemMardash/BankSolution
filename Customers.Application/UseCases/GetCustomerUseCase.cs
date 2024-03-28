@@ -1,7 +1,6 @@
 using Customers.Application.Dtos;
 using Customers.Application.Dtos.Responses;
 using Customers.Application.Interfaces;
-using Customers.Domain.Entities;
 using MediatR;
 
 namespace Customers.Application.UseCases;

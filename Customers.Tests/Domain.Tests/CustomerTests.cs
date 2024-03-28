@@ -1,4 +1,3 @@
-using System.Net.Mail;
 using Customers.Domain.Entities;
 using Customers.Domain.ValueObjects;
 using FluentAssertions;

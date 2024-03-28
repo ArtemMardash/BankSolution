@@ -1,8 +1,5 @@
 using Accounts.Application.Dtos;
-using Accounts.Application.Exceptions;
 using Accounts.Application.Interfaces;
-using Accounts.Domain.Entities;
-using Accounts.Domain.Enums;
 using MediatR;
 
 namespace Accounts.Application.UseCases;

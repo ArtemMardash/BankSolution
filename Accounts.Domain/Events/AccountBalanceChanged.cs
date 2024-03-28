@@ -1,4 +1,3 @@
-using Accounts.Domain.ValueObjects;
 using MediatR;
 
 namespace Accounts.Domain.Events;

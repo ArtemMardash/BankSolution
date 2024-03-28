@@ -1,5 +1,4 @@
 using Accounts.Domain.Entities;
-using Accounts.Domain.Enums;
 
 namespace Accounts.Application.Interfaces;
 

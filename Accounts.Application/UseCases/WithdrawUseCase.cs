@@ -1,5 +1,4 @@
 using Accounts.Application.Dtos;
-using Accounts.Application.Exceptions;
 using Accounts.Application.Interfaces;
 using MediatR;
 

@@ -13,6 +13,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Accounts.Application\Accounts.Application.csproj" />
+      <ProjectReference Include="..\Customers.Application\Customers.Application.csproj" />
       <ProjectReference Include="..\SharedKernal\SharedKernal.csproj" />
     </ItemGroup>
 

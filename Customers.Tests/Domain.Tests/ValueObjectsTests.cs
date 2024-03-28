@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using Customers.Domain.Exceptions;
 using Customers.Domain.ValueObjects;
 using FluentAssertions;

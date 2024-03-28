@@ -1,4 +1,3 @@
-using System.Threading.Channels;
 using Accounts.Domain.Events;
 using MediatR;
 

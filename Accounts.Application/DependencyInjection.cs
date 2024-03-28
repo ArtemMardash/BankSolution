@@ -1,5 +1,3 @@
-using Accounts.Application.Dtos;
-using Accounts.Application.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Accounts.Application;

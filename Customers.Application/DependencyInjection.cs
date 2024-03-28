@@ -1,4 +1,3 @@
-using Customers.Application.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Customers.Application;

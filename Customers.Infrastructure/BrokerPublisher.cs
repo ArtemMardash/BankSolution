@@ -1,8 +1,5 @@
-using System.Text;
-using System.Text.Unicode;
 using Customers.Application.Interfaces;
 using Customers.Domain.Events;
-using Customers.Domain.ValueObjects;
 using MassTransit;
 using SharedKernal;
 
@@ -29,8 +26,8 @@ public class BrokerPublisher : IBrokerPublisher
         return _publishEndpoint.Publish<ICustomerCreated>(new
         {
             customerCreated.FirstName,
-            customerCreated.LastName,   
+            customerCreated.LastName,
             customerCreated.Id
         }, cancellationToken);
     }
-}   
+}

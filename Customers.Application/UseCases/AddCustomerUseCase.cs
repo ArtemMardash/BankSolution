@@ -2,6 +2,7 @@ using Customers.Application.Dtos;
 using Customers.Application.Dtos.Responses;
 using Customers.Application.Interfaces;
 using Customers.Domain.Entities;
+using Customers.Domain.Events;
 using Customers.Domain.ValueObjects;
 using MediatR;
 
@@ -11,11 +12,13 @@ public class AddCustomerUseCase : IRequestHandler<CreateCustomerRequest, CreateC
 {
     private readonly ICustomerRepository _customerRepository;
     private readonly IUnitOfWork _context;
+    private readonly IMediator _mediator;
 
-    public AddCustomerUseCase(ICustomerRepository customerRepository, IUnitOfWork context )
+    public AddCustomerUseCase(ICustomerRepository customerRepository, IUnitOfWork context, IMediator mediator)
     {
         _customerRepository = customerRepository;
         _context = context;
+        _mediator = mediator;
     }
     
 

@@ -1,11 +1,11 @@
 using Customers.Application;
 using Customers.Application.Dtos;
-using Customers.Application.Dtos.Responses;
-using Customers.Application.UseCases;
 using Customers.Infrastructure;
 using Customers.Persistence;
+using Customers.Persistence.AppContext;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +17,15 @@ builder.Services.RegisterUserCases();
 builder.Services.AddPersistence();
 builder.Services.AddInfrastracture();
 builder.Services.RegisterRabitMq();
+
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetService<CustomerDbContext>();
+    context?.Database.Migrate();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

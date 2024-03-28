@@ -1,6 +1,6 @@
 using Customers.Application.Interfaces;
-using Customers.Domain.Entities;
 using Customers.Persistence.AppContext;
+using Customers.Persistence.Entities;
 using MediatR;
 
 namespace Customers.Persistence;
@@ -27,7 +27,7 @@ public class UnitOfWork : IDisposable, IUnitOfWork
     {
         _context.SaveChanges();
         var entities = _context.ChangeTracker
-            .Entries<BaseEntity>()
+            .Entries<Entity>()
             .Select(e => e.Entity)
             .Where(e => e.DomainEvents.Any())
             .ToList();
@@ -43,12 +43,14 @@ public class UnitOfWork : IDisposable, IUnitOfWork
     {
         await _context.SaveChangesAsync();
         var entities = _context.ChangeTracker
-            .Entries<BaseEntity>()
+            .Entries<Entity>()
             .Select(e => e.Entity)
             .Where(e => e.DomainEvents.Any())
             .ToList();
-        var domainEvents = entities.SelectMany(e => e.DomainEvents);
+        
+        var domainEvents = entities.SelectMany(e => e.DomainEvents).ToList();
         entities.ForEach(e => e.DomainEvents.Clear());
+        
         foreach (var domainEvent in domainEvents)
         {
             await _mediator.Publish(domainEvent);

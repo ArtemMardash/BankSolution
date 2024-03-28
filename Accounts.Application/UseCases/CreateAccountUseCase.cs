@@ -1,4 +1,3 @@
-using System.Xml;
 using Accounts.Application.Dtos;
 using Accounts.Application.Dtos.Responses;
 using Accounts.Application.Interfaces;

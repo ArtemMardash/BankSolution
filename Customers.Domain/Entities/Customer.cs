@@ -49,7 +49,7 @@ public class Customer: BaseEntity
         Contacts = contacts;
         MailAddress = mailAddress;
         BillingAddress = billingAddress;
-        DomainEvents.Add(new CustomerCreated());
+        DomainEvents.Add(new CustomerCreated{Id = id, FirstName = FullName.FirstName, LastName = FullName.LastName});
     }
 
     /// <summary>

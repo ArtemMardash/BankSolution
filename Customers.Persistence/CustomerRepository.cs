@@ -1,5 +1,3 @@
-using System.Net.Mail;
-using System.Text;
 using Customers.Application.Interfaces;
 using Customers.Domain.Entities;
 using Customers.Domain.ValueObjects;
@@ -60,8 +58,11 @@ public class CustomerRepository : ICustomerRepository
                 PhoneNumber = customer.Contacts.PhoneNumber
             },
             FullName = customer.FullName.GetString(),
-            MailAddress = $"{customer.MailAddress.ZipCode},{customer.MailAddress.Value}"
+            MailAddress = $"{customer.MailAddress.ZipCode},{customer.MailAddress.Value}",
         };
+        
+        customerDb.DomainEvents.AddRange(customer.DomainEvents);
+        
         await _context.Customers.AddAsync(customerDb, cancellationToken);
     }
 }

@@ -1,7 +1,6 @@
 using Accounts.Application.Dtos;
 using Accounts.Application.Dtos.Responses;
 using Accounts.Application.Interfaces;
-using Accounts.Domain.Entities;
 using MediatR;
 
 namespace Accounts.Application.UseCases;
