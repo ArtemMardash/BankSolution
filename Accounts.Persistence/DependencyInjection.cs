@@ -1,4 +1,6 @@
+using Accounts.Application.Interfaces;
 using Accounts.Persistence.AppContext;
+using Accounts.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,7 +16,7 @@ public static class DependencyInjection
                     builder => builder.MigrationsAssembly(typeof(AccountDbContext).Assembly.GetName().Name));
             }
         );
-        //services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<UnitOfWork>();
     }
 }

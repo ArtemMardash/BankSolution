@@ -1,4 +1,8 @@
+using Accounts.Application;
+using Accounts.Application.Dtos;
+using Accounts.Infrastructure;
 using Accounts.Persistence;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddPersistence();
+builder.Services.RegisterUseCases();
+builder.Services.RegisterRabitMq();
 
 var app = builder.Build();
 
@@ -17,34 +23,72 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-var context = app.Services.GetService<UnitOfWork>();
-context?.Migrate();
-
-var summaries = new[]
+using (var scope = app.Services.CreateScope())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    var services = scope.ServiceProvider;
 
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
+    var context = services.GetService<UnitOfWork>();
+    context?.Migrate();
+}
+
+/*
+ * Закрыть счет(заблокировать аккаунт)
+ * Заблокировать аккаунт(нельзя снять и пополнять)
+ */
+//Create new Account
+app.MapPost("/api/accounts/create",
+        async (CreateAccountDto dto, IMediator mediator, CancellationToken cancellationToken) =>
+        {
+            return await mediator.Send(dto, cancellationToken);
+        })
+    .WithName("CreateNewAccount")
+    .WithTags("Accounts")
     .WithOpenApi();
 
+//Method to withdraw
+app.MapPut("/api/accounts/withdraw",
+        async (WithdrawDto dto, IMediator mediator, CancellationToken cancellationToken) =>
+        {
+            await mediator.Send(dto, cancellationToken);
+        })
+    .WithName("Withdraw")
+    .WithTags("Accounts")
+    .WithOpenApi();
+
+//Method to make a deposit
+app.MapPut("/api/accounts/deposit",
+        async (DepositDto dto, IMediator mediator, CancellationToken cancellationToken) =>
+        {
+            await mediator.Send(dto, cancellationToken);
+        })
+    .WithName("Deposit")
+    .WithTags("Accounts")
+    .WithOpenApi();
+
+app.MapGet("/api/accounts/{customerId}/list/",
+        async (Guid customerId, IMediator mediator, CancellationToken cancellationToken) =>
+        {
+            var accounts =
+                await mediator.Send(new GetCustomerAccountsDto { CustomerId = customerId }, cancellationToken);
+            return accounts;
+        })
+    .WithName("GetCustomerAccountsList")
+    .WithTags("Accounts")
+    .WithOpenApi();
+app.MapPut("/api/accounts/changeStatus/",
+        async (ChangeStatusDto dto, IMediator mediator, CancellationToken cancellationToken) =>
+        {
+            await mediator.Send(dto, cancellationToken);
+        })
+    .WithName("ChangeStatus")
+    .WithTags("Accounts")
+    .WithOpenApi();
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+namespace Accounts.Api
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+    {
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
 }

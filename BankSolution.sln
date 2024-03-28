@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts.Persistence", "Acc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts.Tests", "Accounts.Tests\Accounts.Tests.csproj", "{EAAFADFC-5312-467E-B87F-B5CA98B71B64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernal", "SharedKernal\SharedKernal.csproj", "{BEA72686-F5B3-4C0A-97A3-4FFE298F64A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{EAAFADFC-5312-467E-B87F-B5CA98B71B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAAFADFC-5312-467E-B87F-B5CA98B71B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAAFADFC-5312-467E-B87F-B5CA98B71B64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA72686-F5B3-4C0A-97A3-4FFE298F64A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA72686-F5B3-4C0A-97A3-4FFE298F64A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA72686-F5B3-4C0A-97A3-4FFE298F64A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA72686-F5B3-4C0A-97A3-4FFE298F64A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{CB4673C6-A00E-42C9-ACBB-DFE4ED4711D8} = {2805B02B-EED0-42F3-93AA-EC90DE9149B2}

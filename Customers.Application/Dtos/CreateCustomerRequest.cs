@@ -1,8 +1,9 @@
-using Customers.Domain.ValueObjects;
+using Customers.Application.Dtos.Responses;
+using MediatR;
 
-namespace Customers.Application.Dto_s;
+namespace Customers.Application.Dtos;
 
-public class CreateCustomerDto
+public class CreateCustomerRequest: IRequest<CreateCustomerResponse>
 {
     public string FirstName { get; set; }
     

@@ -1,8 +1,10 @@
 using Customers.Application;
-using Customers.Application.Dto_s;
+using Customers.Application.Dtos;
+using Customers.Application.Dtos.Responses;
 using Customers.Application.UseCases;
-using Customers.Application.UseCases.Interfaces;
+using Customers.Infrastructure;
 using Customers.Persistence;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.RegisterUserCases();
 builder.Services.AddPersistence();
+builder.Services.AddInfrastracture();
+builder.Services.RegisterRabitMq();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,19 +27,17 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.MapGet("/api/customer/{id}",
-        async ([FromRoute]Guid id, [FromServices] IGetCustomerUseCase useCase, CancellationToken cancellationToken) =>
+app.MapGet("/api/customer/{id:guid}",
+        async (Guid id,IMediator mediator, CancellationToken cancellationToken) =>
         {
-            var customer = await useCase.ExecuteAsync(id, cancellationToken);
-            return Results.Ok(customer);
+            return await mediator.Send(new GetCustomerRequest{Id = id}, cancellationToken);
         })
     .WithName("Customers")
     .WithOpenApi();
 
-app.MapPost("/api/customer", async (CreateCustomerDto dto, IAddCustomerUseCase usecase, CancellationToken ct) =>
+app.MapPost("/api/customer", async ([FromBody]CreateCustomerRequest dto, IMediator mediator, CancellationToken cancellationToken) =>
 {
-    var id = await usecase.ExcexuteAsync(dto, ct);
-    return Results.Ok(id);
+    return await mediator.Send(dto, cancellationToken);
 });
 app.Run();
 

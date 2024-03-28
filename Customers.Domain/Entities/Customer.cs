@@ -1,3 +1,4 @@
+using Customers.Domain.Events;
 using Customers.Domain.Exceptions;
 using Customers.Domain.ValueObjects;
 
@@ -6,7 +7,7 @@ namespace Customers.Domain.Entities;
 /// <summary>
 /// Class of the customers
 /// </summary>
-public class Customer
+public class Customer: BaseEntity
 {
     /// <summary>
     /// Id of the customer
@@ -48,6 +49,7 @@ public class Customer
         Contacts = contacts;
         MailAddress = mailAddress;
         BillingAddress = billingAddress;
+        DomainEvents.Add(new CustomerCreated());
     }
 
     /// <summary>

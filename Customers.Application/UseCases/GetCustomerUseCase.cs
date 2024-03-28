@@ -1,10 +1,12 @@
+using Customers.Application.Dtos;
+using Customers.Application.Dtos.Responses;
 using Customers.Application.Interfaces;
-using Customers.Application.UseCases.Interfaces;
 using Customers.Domain.Entities;
+using MediatR;
 
 namespace Customers.Application.UseCases;
 
-public class GetCustomerUseCase:IGetCustomerUseCase
+public class GetCustomerUseCase: IRequestHandler<GetCustomerRequest, GetCustomerResponse>
 {
     private readonly ICustomerRepository _customerRepository;
 
@@ -12,8 +14,17 @@ public class GetCustomerUseCase:IGetCustomerUseCase
     {
         _customerRepository = customerRepository;
     }
-    public Task<Customer> ExecuteAsync(Guid id, CancellationToken cancellationToken)
+
+    public async Task<GetCustomerResponse> Handle(GetCustomerRequest request, CancellationToken cancellationToken)
     {
-        return _customerRepository.GetAsync(id, cancellationToken);
+        var customer = await _customerRepository.GetAsync(request.Id, cancellationToken);
+        return new GetCustomerResponse
+        {
+            FullName = customer.FullName.GetString(),
+            PhoneNumber = customer.Contacts.PhoneNumber,
+            Email = customer.Contacts.Email.Value,
+            MailAddress = $"{customer.MailAddress.Value}, {customer.MailAddress.ZipCode}",
+            BillingAddress = $"{customer.BillingAddress.Value}, {customer.BillingAddress.ZipCode}"
+        };
     }
 }

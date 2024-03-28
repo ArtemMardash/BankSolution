@@ -17,14 +17,14 @@ public class Contacts
     /// <summary>
     /// email
     /// </summary>
-    public Email Value { get; private set; }
+    public Email Email { get; private set; }
 
     /// <summary>
     /// Contacts of customer
     /// </summary>
-    public Contacts(Email value, string phoneNumber)
+    public Contacts(Email email, string phoneNumber)
     {
-        Value = value;
+        Email = email;
         SetPhone(phoneNumber);
     }
 

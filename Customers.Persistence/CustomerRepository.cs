@@ -56,7 +56,7 @@ public class CustomerRepository : ICustomerRepository
             BillingAddress = $"{customer.BillingAddress.ZipCode},{customer.BillingAddress.Value}",
             Contacts = new ContactsDb
             {
-                Email = customer.Contacts.Value.Value,
+                Email = customer.Contacts.Email.Value,
                 PhoneNumber = customer.Contacts.PhoneNumber
             },
             FullName = customer.FullName.GetString(),

@@ -94,3 +94,29 @@ internal class InvalidAmountException: DomainException
         
     }
 }
+
+internal class InvalidAccountStatus: DomainException
+{
+    public InvalidAccountStatus(string message, params string[] args): base(message, args)
+    {
+
+    }
+
+    public InvalidAccountStatus()
+    {
+        
+    }
+}
+internal class InvalidStatusToChangeBalance: DomainException
+{
+    public InvalidStatusToChangeBalance(string message, params string[] args): base(message, args)
+    {
+
+    }
+
+    public InvalidStatusToChangeBalance()
+    {
+        
+    }
+}
+

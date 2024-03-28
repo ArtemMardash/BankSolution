@@ -48,7 +48,7 @@ public class ValueObjectsTests
         test.Should().NotThrow();
         var contact = test();
         contact.Should().NotBeNull();
-        contact.Value.Should().NotBeNull();
+        contact.Email.Should().NotBeNull();
         contact.PhoneNumber.Should().NotBeNull();
     }
 

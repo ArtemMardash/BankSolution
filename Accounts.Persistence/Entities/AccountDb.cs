@@ -1,6 +1,6 @@
 namespace Accounts.Persistence.Entities;
 
-public class AccountDb
+public class AccountDb: BaseEntity
 {
     /// <summary>
     /// Id of account
@@ -18,5 +18,10 @@ public class AccountDb
     /// Balance in the account
     /// </summary>
     public decimal Balance { get; set; }
+    
+    /// <summary>
+    /// Status of account
+    /// </summary>
+    public int Status { get; set; }
 
 }
