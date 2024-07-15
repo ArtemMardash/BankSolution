@@ -1,0 +1,55 @@
+@page "/customerInfo/{id:guid}"
+@using WebApp.Clients
+@attribute [StreamRendering]
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@inject ICustomerClient CustomerClient
+@rendermode @(new InteractiveServerRenderMode(false))
+<PageTitle>Get customer info</PageTitle>
+@code
+{
+    [Parameter]
+    public Guid Id { get; set; }
+}
+<h1>Get Customer</h1>
+    @if (Customer == null)
+    {
+        <p>
+            <em>
+                Loading...
+            </em>
+        </p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>Phone number</th>
+                <th>Email</th>
+                <th>Mail address</th>
+                <th>Billing address</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>@Customer.FullName</td>
+                <td>@Customer.PhoneNumber</td>
+                <td>@Customer.Email</td>
+                <td>@Customer.MailAddress</td>
+                <td>@Customer.BillingAddress</td>
+            </tr>
+            </tbody>
+        </table>
+    }
+@code {
+    public Customer? Customer { get; set; }
+    
+    protected async override Task OnInitializedAsync()
+    {
+        await Task.Delay(Random.Shared.Next(500, 1500));
+        var response = await CustomerClient.GetCustomerAsync(Id);
+        Customer = response;
+    }
+    
+}
