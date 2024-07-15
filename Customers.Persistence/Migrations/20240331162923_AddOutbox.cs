@@ -1,4 +1,4 @@
-﻿using System;
+﻿git push -u origin mainusing System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
