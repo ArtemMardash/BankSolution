@@ -24,7 +24,6 @@ public class CustomerDeletedConsumer: IConsumer<ICustomerDeleted>
     /// <summary>
     /// Method to return message and delete account when customer deleted
     /// </summary>
-    /// <param name="context"></param>
     public async Task Consume(ConsumeContext<ICustomerDeleted> context)
     {
          await _mediator.Send(new DeleteCustomerAccountsDto { CustomerId = context.Message.Id });

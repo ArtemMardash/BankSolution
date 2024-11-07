@@ -56,7 +56,7 @@ public class AccountRepository : IAccountRepository
     {
         var accountDb = FromAccountToAccountDb(account);
         _context.Account.Add(accountDb);
-        await _unitOfWork.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
         return accountDb.PublicId;
     }
 
@@ -85,7 +85,7 @@ public class AccountRepository : IAccountRepository
         }
 
         accountDb.Status = (int)account.Status;
-        await _unitOfWork.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
     /// <summary>
@@ -100,7 +100,7 @@ public class AccountRepository : IAccountRepository
             .Select(aDb => aDb.Entity)
             .ToList();
         _context.Account.RemoveRange(accountsDb);
-        await _unitOfWork.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
     } 
     private static Account? FromAccountDbToAccount(AccountDb? accountDb)
     {

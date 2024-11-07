@@ -22,9 +22,9 @@ public class UnitOfWork: IDisposable
         _context.SaveChanges();
     }
 
-    public Task SaveChangesAsync()
+    public Task SaveChangesAsync(CancellationToken cancellationToken)
     {
-        return _context.SaveChangesAsync();
+        return _context.SaveChangesAsync(cancellationToken);
     }
 
     public void Migrate()

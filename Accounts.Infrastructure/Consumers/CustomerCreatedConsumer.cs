@@ -17,7 +17,6 @@ public class CustomerCreatedConsumer : IConsumer<ICustomerCreated>
     /// <summary>
     /// Customer created consumer
     /// </summary>
-    /// <param name="accountRepository"></param>
     public CustomerCreatedConsumer(IAccountRepository accountRepository)
     {
         _accountRepository = accountRepository;
@@ -26,7 +25,6 @@ public class CustomerCreatedConsumer : IConsumer<ICustomerCreated>
     /// <summary>
     /// Methdo to return message and create account when created customer
     /// </summary>
-    /// <param name="context"></param>
     public async Task Consume(ConsumeContext<ICustomerCreated> context)
     {
         var dto = new CreateAccountDto
